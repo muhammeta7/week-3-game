@@ -58,12 +58,12 @@ function playGame() {
 		if (maxGuesses == 0 || newArray.join("") == wordSelected){
 			if (newArray.join("") == wordSelected){
 				wincount++;
-				$('#winCount').html("Wins: " + winCount);
+				$('#winCount').html(winCount);
 				playGame();
 			}
 			else {
 				lossCount++;
-				$('#lossCount').html("Losses: " + lossCount);
+				$('#lossCount').html(lossCount);
 				playGame();
 			}
 		}
