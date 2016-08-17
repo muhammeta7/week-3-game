@@ -1,4 +1,4 @@
-var words =["Ned Stark" , "John Snow" , "Arya Stark", "Sansa Stark", "Bran Stark", "Rickon Stark", "Robb Stark" "Khaleesi", "The Hound", "The Mountain",
+var words =["Ned Stark" , "John Snow" , "Arya Stark", "Sansa Stark", "Bran Stark", "Rickon Stark", "Robb Stark", "Khaleesi", "The Hound", "The Mountain",
 	 "Cersei Lannister", "Jamie Lannister", "Tyrion Lannister", "Tywin Lannister", "Joffrey Baratheon", "Tommnen Baratheon", "Mycella Baratheon", "Stannis Baratheon",  
 	 "The Red Lady", "Ramsay Bolton", , "Margaery Tyrell", "Lady Brienne", "Littlefinger", "The Spider"];
 
@@ -10,7 +10,7 @@ $('#lossCount').html("You have" + lossCount + " losses!");
 
 function playGame() {
 	
-	var wordSelected = words [Math.floor(Math.random()*24)+1];
+	var wordSelected = Math.random()*words.length;
 	var newArray = [];
 	var guesses = [];
 	var maxGuesses = 10;
@@ -19,31 +19,36 @@ function playGame() {
 	
 	$('#guessedLetters').html("");
 
-	for (var=i;i<wordSelected.length;i++){
-		newArray.push('_')
-	}
+	
+	for (var i=0;i<wordSelected.length;i++){
+		if (wordSelected[i] === ""){
+			newArray[i] = "";
+		}
+		else{
+			newArray[i] = ("_");
+		}
+	};
 
 	$('#wordGuess').html(newArray.join(""));
 
 	
 	document.onkeyup = function (event) {
-		var userInput= String.fromCharCode(even.keyCode).toLowerCase();
-		var case = true;
+		var userInput= String.fromCharCode(event.keyCode).toLowerCase();
+		var situation = true;
 		for (i=0;i<guesses.length;i++){
 			if (userInput == guesses[i]){
-				case == false;
+				situation == false;
 				break;
 			}
-		}
-
+		};
 		
-		if (case == true){
+		if (situation == true){
 			guesses.push(userInput);
-			$("#guessedLetters").append(case);
+			$("#guessedLetters").append(situation);
 			
 			var guessMatch = false;
 			for(i=0;i<wordSelected.length;i++){
-				if(case == wordSelected.charAt(i)){
+				if(situation == wordSelected.charAt(i)){
 					newArray[i] = userInput;
 					$('#wordGuess').html(newArray.join(""))
 					guessMatch = true;
