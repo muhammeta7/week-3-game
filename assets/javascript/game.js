@@ -1,7 +1,7 @@
 var words =["Ned Stark" , "John Snow" , "Arya Stark", "Sansa Stark", "Bran Stark", "Rickon Stark", "Robb Stark", "Khaleesi", "The Hound", "The Mountain",
 	 "Cersei Lannister", "Jamie Lannister", "Tyrion Lannister", "Tywin Lannister", "Joffrey Baratheon", "Tommnen Baratheon", "Mycella Baratheon", "Stannis Baratheon",  
 	 "The Red Lady", "Ramsay Bolton", , "Margaery Tyrell", "Lady Brienne", "Littlefinger", "The Spider"];
-var alphabet = ["abcdefghijklmnopqrstuvwxyz"]
+var alphabet = "abcdefghijklmnopqrstuvwxyz"
 var winCount = 0;
 var lossCount = 0;
 var lettersGuessed = [];
@@ -22,8 +22,8 @@ var winner = true;
 var wordIndex;
 
 function playGame() {
-	word = Math.floor((Math.random()*words.length))
-	wordSelected = words (wordIndex);
+	wordInt = Math.floor((Math.random()*words.length))
+	wordSelected = words [wordInt];
 	console.log(wordSelected);
 
 	if (wordSelected.length !== newWord.length){
@@ -38,16 +38,17 @@ function playGame() {
 			newWord[i] = ("_");
 		}
 	}
-	$('#newWord').html(newWord)
+	$('#newWord').html(newWord);
 };
 
 
 
 document.onkeyup = function (event) {
 	var userInput= String.fromCharCode(event.keyCode).toLowerCase();
+	console.log(userInput);
 	var enter = (event.keyCode);
 
-	if (enter == 13) {
+	if (enter == 13) 
 		playGame();
 	}
 
@@ -67,13 +68,15 @@ document.onkeyup = function (event) {
 			userGuessed = true;
 		}
 	}
+
 	for(var i = 0; i < newWord.length; i++){
 		if (userInput == newWord[i]){
 				userGuessed = true;
 		}
 	}
+
 	if(userGuessed == true){
-			$('#messages').html(messages.guessed);
+		$('#messages').html(messages.guessed);
 	}
 
 	
@@ -85,13 +88,14 @@ document.onkeyup = function (event) {
 	}	
 
 	if(isLetter == true && userGuessed == false && correctLetter == false){
+		console.log('i should be subtracting lives here')
 		lettersGuessed.push(userInput);
 		lives--;
 		$('#lives').html(lives);
 	}
 
 	$('#lettersGuessed').html(lettersGuessed);
-	$('newWord').html(newWord);
+	$('#newWord').html(newWord);
 
 	if (lettersGuessed.length == 10){
 		$('#messages').html(messages.lose);
@@ -109,26 +113,24 @@ document.onkeyup = function (event) {
 
 	if(enter !==13){
 		win();
-	}
+
 }
 
 function win(){
-
 	for (var i=0; i<wordSelected.length; i++){
-		if (newWord[i] == ("_"){
+		if (newWord[i] == ("_")){
 			winner = false;
 		}
 	}
 
 	if ( winner == true) {
 		$('#messages').html(messages.win);
-	}
-	winCount++;
+		winCount++;
 		$('#lettersGuessed').html(lettersGuessed);
-	lives = 10;
-	$('#lives').html(lives);
-
-	playGame();
+		lives = 10;
+		$('#lives').html(lives);
+		playGame();
+	}
 }
 
 

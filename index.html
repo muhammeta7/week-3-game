@@ -12,32 +12,38 @@
 
 <body>
 	
-	<div id = "Hangman">
-		<h1>A Game Of Hangs</h1>
-		<p>All men must press Enter to begin!</p>
+
+	<div class ="row">
+		<div class = "col-sm-12">
+		<header>
+			<h1>A Game of Hangs</h1>
+			<h2>All men must press Enter to begin!</h2>
+		</header>
+		</div>
 	</div>
 
-	<div id ="image1">
-	 	<img src="assets/images/Join_The_Realm.jpg" alt="hangman">
+	<div class ="row">
+		<div class = "col-sm-12">
+		<img src="assets/images/Join_The_Realm.jpg" alt="hangman" id = "image">
+		</div>
 	</div>
 
 
-
-
-	<div class = "container" class="row">
-		<div class= "col-lg-6">
+	<div id = "container" class="row">
+		<div class= "col-lg-4">
 			<div id = "newWord"></div>
+		</div>
+		<div class= "col-lg-4">
 			<p>Guessed Letters: <div id = "lettersGuessed"></div></p>
 			<p>Guesses Remaining: <span id = "lives">10</span></p>
 		</div>
-		
-		<div class= "col-lg-6">
+		<div class= "col-lg-4">
 			<p>Wins: <span id =“winCount”>0</span></p>
 			<p>Losses <span id =“lossCount”>0</span></p>
 			<span id= "messages"></span>
 		</div>
-
 	</div>
+
 
 
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>

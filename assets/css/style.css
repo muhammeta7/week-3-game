@@ -1,21 +1,33 @@
 body {
 	width: 100%;
 	font-family: Courier, monospace;
-	background:  url(../images/background.jpg) no-repeat;
-	background-size: cover; 
 }
 
-h1 {
-	color: white; 
+header h1 {
+	color: red; 
 	font-family: 'Monoton', cursive; 
 	font-size: 75px; 
 	font-weight: bold; 
 	letter-spacing: -1px; 
 	line-height: 1; 
 	text-align: center;
-	padding-bottom: 20px;
-	border: 3px solid white;
+	padding: 20px;
+	border: 3px solid red;
+	background: black;
+	letter-spacing: 10px;
 }
+ 
+ header h2{
+ 	text-align: center;
+	clear: both;
+	font-size: 56px;
+	color: blue;
+	line-height: 20px;
+	font-weight: 700px;
+	font-family: 'Tangerine', cursive;
+	position: relative;
+	top: 30px;
+ }
 
 
 #Hangman p{
@@ -31,49 +43,30 @@ h1 {
 }
 
 
-#head {
-	text-align: center;
-}
-
-#image1{
-	float: left;
+#image{
+	float: right;
 	text-align: center;
 	padding: 20px;
-	width: 300px;
-	height: 300px;
+	width: 400px;
+	height: 400px;
 	position: relative;
 	top: 40px;
 	left: 20px;
 }
 
-/*#image2 {
-	float: right;
+.container{
+	color: red;
 	position: relative;
-	right: 40px;
-	top: 40px;
-	padding: 20px;
+	top: 600px;
 }
-*/
-#text {
-	float: left;
-	text-align: left;
+
+
+
+/*#newWord {
 	color: white;
 	padding: 20px;
-	border: 3px dashed white;
-	padding: 20px;
+	border: 3px dashed black;
 	position: relative;
-	top: 80px;
-	left: 250px;
-
-}
-
-/*
-#window1 {
-	border: 1px solid black;
-}
-#window2 {
-	border: 1px solid black;
-}
-#window3 {
-	border: 1px solid black;
-} */
+	left: 180px;
+	top: 400px;
+}*/
