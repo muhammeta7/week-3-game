@@ -1,81 +1,145 @@
 var words =["Ned Stark" , "John Snow" , "Arya Stark", "Sansa Stark", "Bran Stark", "Rickon Stark", "Robb Stark", "Khaleesi", "The Hound", "The Mountain",
 	 "Cersei Lannister", "Jamie Lannister", "Tyrion Lannister", "Tywin Lannister", "Joffrey Baratheon", "Tommnen Baratheon", "Mycella Baratheon", "Stannis Baratheon",  
 	 "The Red Lady", "Ramsay Bolton", , "Margaery Tyrell", "Lady Brienne", "Littlefinger", "The Spider"];
-
+var alphabet = ["abcdefghijklmnopqrstuvwxyz"]
 var winCount = 0;
-$('#winCount').html("You have" + winCount + " wins!");
-
 var lossCount = 0;
-$('#lossCount').html("You have" + lossCount + " losses!");
+var lettersGuessed = [];
+var lives = 10;
+var messages = {
+	win : 'Not today. The Faceless Man has other plans for you.',
+	lose : 'You Dead!',
+	guessed: 'You have already guessed that letter. Get your life together.',
+	validLetter: 'Enter letter from a-z!',
+}
+var isLetter = false;
+var userGuessed = false;
+var guesses = 0; 
+var wordSelected;
+var newWord = [];
+var correctLetter = false;
+var winner = true;
+var wordIndex;
 
 function playGame() {
-	
-	var wordSelected = Math.random()*words.length;
-	var newArray = [];
-	var guesses = [];
-	var maxGuesses = 10;
-	
-	$('#guessesLeft').html("Remaining Guesses: " + maxGuesses);
-	
-	$('#guessedLetters').html("");
+	word = Math.floor((Math.random()*words.length))
+	wordSelected = words (wordIndex);
+	console.log(wordSelected);
 
-	
+	if (wordSelected.length !== newWord.length){
+		newWord = [];
+	}
+
 	for (var i=0;i<wordSelected.length;i++){
-		if (wordSelected[i] === ""){
-			newArray[i] = "";
+		if (wordSelected[i] === " "){
+			newWord[i] = " ";
 		}
-		else{
-			newArray[i] = ("_");
+		else {
+			newWord[i] = ("_");
 		}
-	};
+	}
+	$('#newWord').html(newWord)
+};
 
-	$('#wordGuess').html(newArray.join(""));
+
+
+document.onkeyup = function (event) {
+	var userInput= String.fromCharCode(event.keyCode).toLowerCase();
+	var enter = (event.keyCode);
+
+	if (enter == 13) {
+		playGame();
+	}
+
+	for (var i=0;i<alphabet.length;i++){
+		if (userInput === alphabet.charAt(i)){
+			isLetter = true;
+		}
+	}
+
+	if( isLetter == false && enter!== 13){
+		$('#messages').html(messages.validLetter);
+	}
+
+
+	for(var i = 0; i < lettersGuessed.length; i++){
+		if(userInput === lettersGuessed[i]){
+			userGuessed = true;
+		}
+	}
+	for(var i = 0; i < newWord.length; i++){
+		if (userInput == newWord[i]){
+				userGuessed = true;
+		}
+	}
+	if(userGuessed == true){
+			$('#messages').html(messages.guessed);
+	}
 
 	
-	document.onkeyup = function (event) {
-		var userInput= String.fromCharCode(event.keyCode).toLowerCase();
-		var situation = true;
-		for (i=0;i<guesses.length;i++){
-			if (userInput == guesses[i]){
-				situation == false;
-				break;
-			}
-		};
-		
-		if (situation == true){
-			guesses.push(userInput);
-			$("#guessedLetters").append(situation);
-			
-			var guessMatch = false;
-			for(i=0;i<wordSelected.length;i++){
-				if(situation == wordSelected.charAt(i)){
-					newArray[i] = userInput;
-					$('#wordGuess').html(newArray.join(""))
-					guessMatch = true;
-				}
-			}
-				if (guessMatch == false){
-					maxGuesses--;
-					$('guessesLeft').html("Remain Guesses: " + maxGuesses)
-				}
+	for(var i = 0; i < wordSelected.length; i++){
+		if (wordSelected[i] === userInput){
+			newWord[i] = wordSelected[i];
+			correctLetter = true;
 		}
+	}	
 
-		if (maxGuesses == 0 || newArray.join("") == wordSelected){
-			if (newArray.join("") == wordSelected){
-				wincount++;
-				$('#winCount').html(winCount);
-				playGame();
-			}
-			else {
-				lossCount++;
-				$('#lossCount').html(lossCount);
-				playGame();
-			}
-		}
+	if(isLetter == true && userGuessed == false && correctLetter == false){
+		lettersGuessed.push(userInput);
+		lives--;
+		$('#lives').html(lives);
+	}
+
+	$('#lettersGuessed').html(lettersGuessed);
+	$('newWord').html(newWord);
+
+	if (lettersGuessed.length == 10){
+		$('#messages').html(messages.lose);
+		lettersGuessed = [];
+		$('#messages').html(messages.lose);
+		lossCount++;
+		$('#lossCount').html(lossCount);
+		lives = 10;
+		playGame();
+	}
+
+	correctLetter = false;
+	isLetter = false;
+	userGuessed = false;
+
+	if(enter !==13){
+		win();
 	}
 }
 
-playGame();
+function win(){
+
+	for (var i=0; i<wordSelected.length; i++){
+		if (newWord[i] == ("_"){
+			winner = false;
+		}
+	}
+
+	if ( winner == true) {
+		$('#messages').html(messages.win);
+	}
+	winCount++;
+		$('#lettersGuessed').html(lettersGuessed);
+	lives = 10;
+	$('#lives').html(lives);
+
+	playGame();
+}
+
+
+
+
+
+
+
+
+
+
 
 			
 
