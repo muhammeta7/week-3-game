@@ -6,7 +6,8 @@ Hangman game with a Game of Thrones theme. Click enter to begin the game. Input 
 Created during Week 3 of Rutgers Coding Bootcamp. The challenge was to create a hangman game. 
 
 # :computer: Check the page out
-1. Link: [GOT Handman](https://got-hangman.herokuapp.com/)
+
+Link: [GOT Hangman](https://got-hangman.herokuapp.com/) (Note: the JavaScript is not complete)
 
 ## Screenshots
 
