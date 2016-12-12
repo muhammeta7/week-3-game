@@ -1,6 +1,6 @@
-var words =["Ned Stark" , "John Snow" , "Arya Stark", "Sansa Stark", "Bran Stark", "Rickon Stark", "Robb Stark", "Khaleesi", "The Hound", "The Mountain",
-	 "Cersei Lannister", "Jamie Lannister", "Tyrion Lannister", "Tywin Lannister", "Joffrey Baratheon", "Tommnen Baratheon", "Mycella Baratheon", "Stannis Baratheon",  
-	 "The Red Lady", "Ramsay Bolton", , "Margaery Tyrell", "Lady Brienne", "Littlefinger", "The Spider"];
+var words =["ned stark" , "john snow" , "arya stark", "sansa stark","bran stark", "rickon stark", "robb stark", "khaleesi", "the hound", "the mountain",
+	 "cersei lannister", "jamie lannister", "tyrion lannister", "tywin lannister", "joffrey baratheon", "tommnen baratheon", "mycella baratheon", "stannis baratheon",  
+	 "the red lady", "ramsay bolton",  "margaery tyrell", "lady brienne", "littlefinger", "the spider"];
 var alphabet = "abcdefghijklmnopqrstuvwxyz"
 var winCount = 0;
 var lossCount = 0;
